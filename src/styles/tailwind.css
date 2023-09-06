@@ -1,0 +1,109 @@
+/* src/styles/tailwind.css */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Header Styles */
+.header {
+  @apply bg-gray-800 text-white py-5 px-4 flex justify-between items-center;
+}
+
+.header h1 {
+  @apply text-3xl font-semibold;
+}
+
+.search-bar {
+  @apply flex items-center;
+}
+
+.search-bar input[type="text"] {
+  @apply py-1 px-2 border-b border-white bg-transparent text-white;
+}
+
+.search-bar button {
+  @apply bg-blue-500 text-white px-4 py-2 rounded cursor-pointer;
+}
+
+/* Navigation Styles */
+.navigation {
+  @apply bg-blue-500 text-white py-2 flex justify-between items-center;
+}
+
+.navigation ul {
+  @apply list-none flex p-0 m-0;
+}
+
+.navigation li {
+  @apply mr-4 cursor-pointer;
+}
+
+.extras {
+  @apply flex items-center mt-2;
+}
+
+.extras span {
+  @apply mr-4 cursor-pointer;
+}
+
+/* Login Styles */
+.login-container {
+  @apply flex justify-center items-center h-screen;
+}
+
+.login-form {
+  @apply border border-gray-300 p-4 max-w-md w-full bg-white shadow-md;
+}
+
+.login-form h2 {
+  @apply text-2xl font-semibold text-gray-800 text-center;
+}
+
+.form-group {
+  @apply mb-5;
+}
+
+.form-group label {
+  @apply block font-semibold mb-1 text-gray-700;
+}
+
+.form-group input {
+  @apply w-full p-2 border border-gray-300 rounded;
+}
+
+button {
+  @apply block w-full p-2 bg-blue-500 text-white rounded font-semibold text-center cursor-pointer;
+}
+
+button:hover {
+  @apply bg-blue-700;
+}
+
+.error {
+  @apply text-red-500 text-sm mt-2 text-center;
+}
+
+/* Additional Styles */
+.movie-list {
+  @apply p-4;
+}
+
+.movie-container {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+}
+
+.movie-card {
+  @apply bg-white shadow-md p-3 rounded-lg;
+}
+
+.movie-card img {
+  @apply w-full h-auto rounded-md;
+}
+
+.movie-card h3 {
+  @apply text-lg font-semibold mt-2;
+}
+
+.movie-card p {
+  @apply text-gray-600 mt-1;
+}
