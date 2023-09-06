@@ -10,7 +10,7 @@ export default function Home() {
   const [searchKeyword, setSearchKeyword] = useState('');
 
   const dummyMovies = [
-    // Data film Anda
+    // Data film 
   ];
 
   useEffect(() => {
