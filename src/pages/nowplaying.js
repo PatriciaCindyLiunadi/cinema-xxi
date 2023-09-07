@@ -60,7 +60,10 @@ const NowPlaying = () => {
   const renderMovieCards = () => {
     return nowPlayingMovies.map((movie) => (
       <div key={movie.id} className="movie-card">
-        <MovieCard movie={movie} />
+       <Link href={`/moviedetail/${movie.id}`} passHref>
+  <MovieCard movie={movie} />
+</Link>
+
       </div>
     ));
   };
@@ -84,23 +87,23 @@ const NowPlaying = () => {
           </div>
         </div>
       </header>
-      <nav className="navigation bg-blue-500 text-white py-2 flex justify-between items-center"> 
-        <ul className="main-menu flex space-x-4"> 
+      <nav className="navigation bg-blue-500 text-white py-2 flex justify-between items-center">
+        <ul className="main-menu flex space-x-4">
           <li><Link href="/nowplaying">Now Playing</Link></li>
           <li><Link href="/upcoming">Upcoming</Link></li>
           <li>Theaters</li>
           <li>Promotion</li>
           <li>Info21</li>
         </ul>
-        <div className="flex space-x-2"> 
+        <div className="flex space-x-2">
           <span>IMAX</span>
           <span>DOLBY ATMOS</span>
           <span>M-Tix</span>
         </div>
       </nav>
       <main>
-        <h2 className="text-1xl">Now Playing</h2> 
-        <div className="grid grid-cols-4 gap-4"> 
+        <h2 className="text-1xl">Now Playing</h2>
+        <div className="grid grid-cols-4 gap-4">
           {renderMovieCards()}
         </div>
       </main>

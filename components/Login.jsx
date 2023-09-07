@@ -3,7 +3,7 @@ import Login from '../components/Login';
 
 const LoginPage = () => {
   const handleLogin = (username, password) => {
-    // Implementasi verifikasi login di sini
+
   };
 
   return (

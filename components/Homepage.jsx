@@ -1,4 +1,3 @@
-
 const Homepage = ({ nowPlayingMovies, upcomingMovies }) => {
     const allMovies = [...nowPlayingMovies, ...upcomingMovies];
   

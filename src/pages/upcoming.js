@@ -1,59 +1,58 @@
-// pages/upcoming.js
 import React from 'react';
 import Link from 'next/link';
-import UpcomingMovies from 'components/UpcomingMovies';
-import MovieCard from 'components/MovieCard';
+import UpcomingMovies from 'components/UpcomingMovies'; 
 
 const upcomingMovies = [
   {
-    id: 1,
-    title: 'The Nun II',
-    description: 'Deskripsi film 1',
-    poster: 'The nun.jpg',
-  },
-  {
-    id: 2,
-    title: 'The Nun II',
-    description: 'Deskripsi film 1',
-    poster: 'The nun.jpg',
-  },
-  {
-    id: 3,
-    title: 'The Nun II',
-    description: 'Deskripsi film 1',
-    poster: 'The nun.jpg',
-  },
-  {
-    id: 4,
-    title: 'The Nun II',
-    description: 'Deskripsi film 1',
-    poster: 'The nun.jpg',
-  },
-  {
-    id: 5,
-    title: 'The Nun II',
-    description: 'Deskripsi film 1',
-    poster: 'The nun.jpg',
-  },
-  {
-    id: 6,
-    title: 'The Nun II',
-    description: 'Deskripsi film 1',
-    poster: 'The nun.jpg',
-  },
-  {
-    id: 7,
-    title: 'The Nun II',
-    description: 'Deskripsi film 1',
-    poster: 'The nun.jpg',
-  },
-  {
-    id: 8,
-    title: 'The Nun II',
-    description: 'Deskripsi film 1',
-    poster: 'The nun.jpg',
-  },
-];
+      id: 1,
+      title: 'The Nun II',
+      description: 'Deskripsi film 1',
+      poster: 'The nun.jpg',
+    },
+    {
+      id: 2,
+      title: 'The Nun II',
+      description: 'Deskripsi film 1',
+      poster: 'The nun.jpg',
+    },
+    {
+      id: 3,
+      title: 'The Nun II',
+      description: 'Deskripsi film 1',
+      poster: 'The nun.jpg',
+    },
+    {
+      id: 4,
+      title: 'The Nun II',
+      description: 'Deskripsi film 1',
+      poster: 'The nun.jpg',
+    },
+    {
+      id: 5,
+      title: 'The Nun II',
+      description: 'Deskripsi film 1',
+      poster: 'The nun.jpg',
+    },
+    {
+      id: 6,
+      title: 'The Nun II',
+      description: 'Deskripsi film 1',
+      poster: 'The nun.jpg',
+    },
+    {
+      id: 7,
+      title: 'The Nun II',
+      description: 'Deskripsi film 1',
+      poster: 'The nun.jpg',
+    },
+    {
+      id: 8,
+      title: 'The Nun II',
+      description: 'Deskripsi film 1',
+      poster: 'The nun.jpg',
+    },
+  ];
+
 
 const UpcomingPage = () => {
   return (
@@ -90,14 +89,7 @@ const UpcomingPage = () => {
         </div>
       </nav>
       <main>
-        <h2 className="text-1xl">Upcoming Movies</h2>
-        <div className="grid grid-cols-4 gap-4">
-          {upcomingMovies.map((movie) => (
-            <div key={movie.id} className="movie-card">
-              <MovieCard movie={movie} />
-            </div>
-          ))}
-        </div>
+        <UpcomingMovies upcomingMovies={upcomingMovies} />
       </main>
     </div>
   );

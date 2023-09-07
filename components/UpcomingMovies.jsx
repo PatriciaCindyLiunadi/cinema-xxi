@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieList from './MovieList'; // Pastikan path-nya sesuai dengan struktur folder Anda
+import MovieList from './MovieList';
 
 const UpcomingMovies = ({ upcomingMovies }) => {
   return (

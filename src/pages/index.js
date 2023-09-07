@@ -22,7 +22,7 @@ export default function Home() {
   }, []);
 
   const handleLogin = (username, password) => {
-    // Implementasi verifikasi login di sini
+    
     setLoggedIn(true);
   };
 

@@ -1,5 +1,3 @@
-// fakeApi.js
-
 const fakeApi = {
   getNowPlayingMovies: () => {
     return [

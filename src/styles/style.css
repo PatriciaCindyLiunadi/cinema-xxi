@@ -92,18 +92,15 @@
     padding: 20px;
   }
   
-  .movie-container {
+  .movie-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between; /* Membuat ruang di antara card */
   }
   
   .movie-card {
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    width: calc(25% - 16px); /* 25% agar ada 4 card per baris, dan kurangkan margin yang akan menambahkan 16px di antara card */
+    margin-bottom: 16px;
   }
   
   .movie-card img {
@@ -119,4 +116,5 @@
   .movie-card p {
     color: #777;
   }
+  
   
