@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import MovieCard from 'components/MovieCard'; // Sesuaikan dengan jalur yang benar
+import MovieCard from 'components/MovieCard';
 
 const NowPlaying = () => {
   // Di sini, Anda perlu mendapatkan daftar film yang sedang tayang.
@@ -11,8 +11,8 @@ const NowPlaying = () => {
       id: 1,
       title: 'The Nun II',
       description: 'Deskripsi film 1',
-      poster: 'The nun.jpg',
-    },    
+      poster: 'NoHardFeelings.jpg',
+    },
     {
       id: 2,
       title: 'The Nun II',
@@ -21,6 +21,36 @@ const NowPlaying = () => {
     },
     {
       id: 3,
+      title: 'The Nun II',
+      description: 'Deskripsi film 1',
+      poster: 'The nun.jpg',
+    },
+    {
+      id: 4,
+      title: 'The Nun II',
+      description: 'Deskripsi film 1',
+      poster: 'The nun.jpg',
+    },
+    {
+      id: 5,
+      title: 'The Nun II',
+      description: 'Deskripsi film 1',
+      poster: 'The nun.jpg',
+    },
+    {
+      id: 6,
+      title: 'The Nun II',
+      description: 'Deskripsi film 1',
+      poster: 'The nun.jpg',
+    },
+    {
+      id: 7,
+      title: 'The Nun II',
+      description: 'Deskripsi film 1',
+      poster: 'The nun.jpg',
+    },
+    {
+      id: 8,
       title: 'The Nun II',
       description: 'Deskripsi film 1',
       poster: 'The nun.jpg',
@@ -37,7 +67,7 @@ const NowPlaying = () => {
 
   return (
     <div>
-      <header className="header bg-blue-500 flex justify-between items-center"> {/* Menggunakan kelas Tailwind CSS untuk warna biru dan flex */}
+      <header className="header bg-blue-500 flex justify-between items-center">
         <div className="header-left">
           <h1>
             <Link href="/">Cinema XXI</Link>
@@ -47,28 +77,30 @@ const NowPlaying = () => {
           <div className="search-bar">
             <input
               type="text"
-              placeholder="Cari film..."
+              placeholder="Search Movie..."
               // Tambahkan logika pencarian di sini jika diperlukan
             />
             <button onClick={() => handleSearch()}>Cari</button>
           </div>
         </div>
       </header>
-      <div className="header-bottom bg-blue-500"> {/* Menggunakan kelas Tailwind CSS untuk warna biru */}
-        <ul className="main-menu flex space-x-4 text-white"> {/* Menggunakan kelas Tailwind CSS untuk flex dan ruang antara item */}
+      <nav className="navigation bg-blue-500 text-white py-2 flex justify-between items-center"> 
+        <ul className="main-menu flex space-x-4"> 
           <li><Link href="/nowplaying">Now Playing</Link></li>
           <li><Link href="/upcoming">Upcoming</Link></li>
           <li>Theaters</li>
           <li>Promotion</li>
           <li>Info21</li>
-          <li>IMAX</li>
-          <li>DOLBY ATMOS</li>
-          <li>M-Tix</li>
         </ul>
-      </div>
+        <div className="flex space-x-2"> 
+          <span>IMAX</span>
+          <span>DOLBY ATMOS</span>
+          <span>M-Tix</span>
+        </div>
+      </nav>
       <main>
-        <h2 className="text-1xl">Now Playing</h2> {/* Menggunakan kelas Tailwind CSS */}
-        <div className="grid grid-cols-4 gap-4"> {/* Menggunakan kelas Tailwind CSS */}
+        <h2 className="text-1xl">Now Playing</h2> 
+        <div className="grid grid-cols-4 gap-4"> 
           {renderMovieCards()}
         </div>
       </main>

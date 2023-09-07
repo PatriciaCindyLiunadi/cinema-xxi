@@ -68,7 +68,7 @@ export default function Home() {
         </div>
       </nav>
       <main>
-        {/* Gunakan komponen Homepage di sini */}
+        
         <Homepage nowPlayingMovies={movies} upcomingMovies={movies} />
       </main>
     </div>

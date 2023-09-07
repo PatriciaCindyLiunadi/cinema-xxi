@@ -1,6 +1,5 @@
-// Contoh penggunaan komponen MovieList di dalam halaman Next.js
 import React from 'react';
-import MovieList from './nowplayingMovieList'; // Sesuaikan dengan jalur yang benar
+import MovieList from './nowplayingMovieList';
 
 const NowPlayingPage = () => {
   return (

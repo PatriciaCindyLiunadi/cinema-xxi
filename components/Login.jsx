@@ -1,6 +1,5 @@
-// Contoh penggunaan komponen Login di dalam halaman Next.js
 import React from 'react';
-import Login from '../components/Login'; // Sesuaikan dengan jalur yang benar
+import Login from '../components/Login'; 
 
 const LoginPage = () => {
   const handleLogin = (username, password) => {
