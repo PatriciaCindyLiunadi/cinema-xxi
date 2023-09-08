@@ -14,18 +14,29 @@ export default function RegisterPage () {
                   <title>Register Page</title>
                 </Head>
             </div>
-            {/* Background */}
-            <div className="bg-gradient-to-r from-cyan-500/10 via-teal-300/10 to-sky-200/10 block h-screen items-center justify-center p-4 md:flex">
-            
-                <div className="bg-white flex flex-col items-center max-w-screen-lg overflow-hidden rounded-lg shadow-[0_3px_10px_rgb(0,0,0,1)] space-y-8 w-full md:flex-row text-slate-700">
-                    <div className="bg-blue flex fex-col justify-center p-14">
-                    
+            {/* Background bg-gradient-to-r from-cyan-500/10 via-teal-300/10 to-sky-200/10, bg-gradient-to-r from-cyan-300 to-blue-300*/}
+            <div className="bg-white block h-screen items-center justify-center p-4 md:flex">
+                {/* Container */}
+                <div className="bg-white flex flex-col items-center max-w-screen-md overflow-hidden rounded-lg shadow-[0_3px_10px_rgb(0,0,0,1)] space-y-8 w-full md:flex-row text-slate-700">
+                    {/* Welcome */}
+                    <div className="bg-gradient-to-t from-sky-400 to-stone-100 flex flex-col items-center p-9 w-full md:w-2/5 text-white">
+                        <div className="flex flex-col justify-center items-start text-left text-slate-700 w-full p-10">
+                        <div className="flex flex-col justify-center items-start text-left text-slate-700 w-full p-10">
+                        <h2 className="text-3xl font-bold mb-4 ">Welcome To Jico</h2>
+                        <p className="text-base font-normal mb-48">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec
+                            ultricies nisi. Suspendisse pulvinar viverra nibh vel ultricies.
+                            Mauris tincidunt mollis diam, at mollis enim aliquet eget. Fusce
+                            eros neque, pharetra eget tincidunt in, tincidunt nec tellus.
+                        </p>
+                        </div>
                     </div>
                     <form className="flex flex-col justify-center items-center p-14 pl-36 space-y-4"> 
 
                     </form>
                 </div>
             </div>
+        </div>
         </div>
     )
 }
