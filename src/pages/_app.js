@@ -1,12 +1,14 @@
-// pages/_app.js
-import '../styles/globals.css'; 
-import '../styles/style.css';
-import '../styles/tailwind.css';
-import '../styles/nowplaying.css';
+import React from 'react';
+import Layout from '/components/Layout'; // Pastikan path-nya benar
 
+import '@/styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
 
 export default MyApp;
