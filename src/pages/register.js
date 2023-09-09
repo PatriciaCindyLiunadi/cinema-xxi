@@ -5,19 +5,76 @@ import { FaRegEnvelope } from "react-icons/fa";
 import {BiHide, BiShow} from "react-icons/bi"
 
 const fullname_valid = /^[A-Z][a-zA-Z\s]*$/;
+const phoneNumber_Valid = /^\d+$/;
 const email_valid = /^[a-zA-Z0-9_.]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; //dapat menggunakan angka, huruf, _ dan . sebelum @
 const pass_valid = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{6,10}$/; //ada satu huruf dan angka yang required dengan min.6-10 huruf
 
 export default function RegisterPage () {
-    const[fullname, setFullName] = useState('');
+    const useReference = useRef();
+    const errorReference = useRef();
+
+    const [fullname, setFullName] = useState('');
+    const [validFullname, setValidFullname] = useState(false);
+    const [fullnameFocus, setFullnameFocus] = useState(false);
+
     const[phonenum, setPhoneNum] = useState('');
+    const [validphone, setValidPhone] = useState(false);
+    const [phonefocus, setPhoneFocus] = useState(false);
+
     const[email, setEmail] = useState('');
+    const [validEmail, setValidEmail] = useState(false);
+    const [emailFocus, setEmailFocus] = useState(false);
+  
     const[pass, setPass] = useState('');
+    const [validPass, setValidPass] = useState(false);
+    const [passFocus, setPassFocus] = useState(false);
+
+    const [gender, setGender] = useState('');
 
     // Hide n Unhine Pass
     const [showpass, setShowPass] = useState(false);
 
-    const [gender, setGender] = useState('');
+      // Error Message
+    const [errMsg, setErrMsg] = useState("");
+    const [success, setSuccess] = useState(false);
+
+    // UseEffect
+    
+    useEffect(() => {
+        useReference.current.focus();
+    },[]);
+
+    useEffect(() => {
+        const result = fullname_valid.test(fullname);
+        console.log(result);
+        console.log(fullname);
+        setValidFullname(result);
+    },[fullname]);
+
+    useEffect(() => {
+        const result = phoneNumber_Valid.test(phonenum);
+        console.log(result);
+        console.log(phonenum);
+        setValidPhone(result);
+    },[phonenum]);
+
+    useEffect(() => {
+        const result = email_valid.test(email);
+        console.log(result);
+        console.log(email);
+        setValidEmail(result);
+     }, [email]);
+
+    useEffect(() => {
+        const result = pass_valid.test(pass);
+        console.log(result);
+        console.log(pass);
+        setValidPass(result);
+    }, [pass]);
+
+    useEffect(() => {
+        setErrMsg("");
+    }, [fullname, phonenum, email, pass, gender])
 
     return (
         <div>
