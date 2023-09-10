@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Head from "next/head";
 import { MdPermIdentity, MdLockOutline, MdPhoneIphone } from "react-icons/md";
 import { FaRegEnvelope } from "react-icons/fa";
-import {BiHide, BiShow} from "react-icons/bi"
+import {BiHide, BiShow, BiSolidInfoCircle} from "react-icons/bi"
 
 const fullname_valid = /^[A-Z][a-zA-Z\s]*$/;
 const phoneNumber_Valid = /^\d+$/;
@@ -10,7 +10,7 @@ const email_valid = /^[a-zA-Z0-9_.]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; //dapat men
 const pass_valid = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{6,10}$/; //ada satu huruf dan angka yang required dengan min.6-10 huruf
 
 export default function RegisterPage () {
-    const useReference = useRef();
+    const userReference = useRef();
     const errorReference = useRef();
 
     const [fullname, setFullName] = useState('');
@@ -19,7 +19,7 @@ export default function RegisterPage () {
 
     const[phonenum, setPhoneNum] = useState('');
     const [validphone, setValidPhone] = useState(false);
-    const [phonefocus, setPhoneFocus] = useState(false);
+    const [phoneFocus, setPhoneFocus] = useState(false);
 
     const[email, setEmail] = useState('');
     const [validEmail, setValidEmail] = useState(false);
@@ -32,7 +32,7 @@ export default function RegisterPage () {
     const [gender, setGender] = useState('');
 
     // Hide n Unhine Pass
-    const [showpass, setShowPass] = useState(false);
+    const [showPass, setShowPass] = useState(false);
 
       // Error Message
     const [errMsg, setErrMsg] = useState("");
@@ -41,7 +41,7 @@ export default function RegisterPage () {
     // UseEffect
     
     useEffect(() => {
-        useReference.current.focus();
+        userReference.current.focus();
     },[]);
 
     useEffect(() => {
@@ -76,6 +76,15 @@ export default function RegisterPage () {
         setErrMsg("");
     }, [fullname, phonenum, email, pass, gender])
 
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+
+        console.log(fullname, phonenum, email, gender, pass)
+        console.log("Registration Success")
+        setSuccess(true)
+
+    }
+
     return (
         <div>
             <div>
@@ -101,7 +110,9 @@ export default function RegisterPage () {
                     </div>
 
                     {/* Regist */}
-                    <form className="flex flex-col justify-center items-center space-y-4 mx-auto"> 
+                    <form 
+                    onSubmit={handleSubmit}
+                    className="flex flex-col justify-center items-center space-y-4 mx-auto"> 
                     {/* Title */}
                     <div className="flex flex-col justify-center text-center space-y-4">
                        <h1 className="text-slate-700 text-3xl font-semibold">
@@ -111,6 +122,22 @@ export default function RegisterPage () {
                     <div className="relative p-y">
                     
                         {/* Fullname */}
+
+                        {/* Warning */}
+                        <p
+                        id="fullnamenote"
+                        className={`${
+                            fullnameFocus && fullname && !validFullname 
+                              ? "instructions"
+                              : "sr-only"
+                            } flex items-center text-red-600 mb-2`
+                          }
+                        >
+                          <BiSolidInfoCircle className="mr-2"/>  
+                          Must start with capital letter
+                        </p>
+
+
                         <div className="w-full bg-white flex items-center mb-[3%] border-gray-300 border rounded-lg px-3 py-2 focus:outline-none shadow shadow-black">
                         <MdPermIdentity className="m-[1%] text-slate-700" />
                             <input
@@ -118,12 +145,32 @@ export default function RegisterPage () {
                             type="text"
                             placeholder="Fullname" 
                             autoComplete="off" 
+                            ref={userReference}
                             onChange={(e) => setFullName(e.target.value)}
                             required
+                            aria-invalid = {validFullname ? "false" : "true"}
+                            aria-describedby="fullnamenote"
+                            onFocus={() => setFullnameFocus(true)}
+                            onBlur={() => setFullnameFocus(false)}
                             />
                         </div>
 
                         {/* Phone  Number */}
+
+                        {/* Warning */}
+                        <p
+                        id="phonenote"
+                        className={`${
+                            phoneFocus && phonenum && !validphone 
+                              ? "instructions"
+                              : "sr-only"
+                            } flex items-center text-red-600 mb-2`
+                          }
+                        >
+                          <BiSolidInfoCircle className="mr-2"/>  
+                          The PhoneNmber must be valid.
+                        </p>
+
                         <div className="w-full bg-white flex items-center mb-[3%] border-gray-300 border rounded-lg px-3 py-2 focus:outline-none shadow shadow-black">
                         <MdPhoneIphone className="m-[1%] text-slate-700"/>
                         <input
@@ -132,10 +179,30 @@ export default function RegisterPage () {
                         placeholder="Phone Number"
                         onChange={(e) => setPhoneNum(e.target.value)}
                         required
+                        aria-invalid = {validphone ? "false" : "true"} 
+                        aria-describedby="phonenote"
+                        onFocus={() => setPhoneFocus(true)}
+                        onBlur={() => setPhoneFocus(false)}
                         />
                         </div>
 
                         {/* Email */}
+
+                        {/* Warning */}
+                        <p
+                        id="emailnote"
+                        className={`${
+                            emailFocus && email && !validEmail
+                              ? "instructions"
+                              : "sr-only"
+                            } flex items-center text-red-600 mb-2`
+                          }
+                        >
+                          <BiSolidInfoCircle className="mr-2"/>  
+                          Letters, numbers, underscore and dot are allowed
+                        </p>
+
+
                         <div className="w-full bg-white flex items-center mb-[3%] border-gray-300 border rounded-lg px-3 py-2 focus:outline-none shadow shadow-black">
                         <FaRegEnvelope className="m-[1%] text-slate-700"/>
                         <input
@@ -144,14 +211,36 @@ export default function RegisterPage () {
                         placeholder="Email"
                         onChange={(e) => setEmail(e.target.value)}
                         required
+                        aria-invalid={validEmail ? "false" : "true"}
+                        aria-describedby = "emailnote"
+                        onFocus={() => setEmailFocus(true)}
+                        onBlur={() => setEmailFocus(false)}
                         />
                         </div>
 
                         {/* Gender */}
+
+                        {/* Warning */}
+                        <p
+                        id="gendernote"
+                        className={`${
+                            !gender
+                              ? "text-red-600 mb-2"
+                              : "sr-only"
+                            } flex items-center `
+                          }
+                        >
+                          <BiSolidInfoCircle className="mr-2"/>  
+                          Please select your gender
+                        </p>
+
+
                         <div className="w-40 bg-white flex items-center mb-[3%] border-gray-300 border rounded-lg px-3 py-2 focus:outline-none shadow shadow-black">
                         <select
                         className="py-1 w-full focus:outline-none"
-                        onChange={(e) => setGender(e.target.value)}                   
+                        onChange={(e) => setGender(e.target.value)}   
+                        required       
+                        aria-describedby="gendernote"        
                         >
                             <option value="">Select Gender</option>
                             <option value="male">Male</option>
@@ -161,24 +250,46 @@ export default function RegisterPage () {
                         </div>
 
                         {/* Password */}
+                        
+                        {/* Warning */}
+                        <p
+                        id="email-note"
+                        className={`${
+                            passFocus && pass && !validPass 
+                            ? "instructions" 
+                            : "sr-only"
+                            } flex items-center text-red-600 mt-2`
+                        }
+                        >
+                        <BiSolidInfoCircle className="mr-2"/>
+                        6 to 10 characters <br />
+                        Must have atleast 1 characters, 1 numbers
+                        </p>
+
                         <div className="w-full bg-white flex items-center mb-[3%] border-gray-300 border rounded-lg px-3 py-2 focus:outline-none shadow shadow-black">
                         <MdLockOutline className="m-[1%] text-slate-700"/>
                         <input
                         className="pl-2 py-1 w-60 focus:outline-none"
-                        type="password"
+                        type={showPass ? "text" : "password"}
                         placeholder="Password"
                         onChange={(e) => setPass(e.target.value)}
                         required
+                        aria-invalid={validPass ? "false" : "true"}
+                        aria-describedby ="passnote"
+                        onFocus={() => setPassFocus(true)}
+                        onBlur={() => setPassFocus(false)}
                         />
 
                         {/* Show n Unhide pass */}
-                        {showpass ? (
+                        {showPass ? (
                             <BiHide
                             onClick={() => setShowPass(false)}
+                            className="cursor-pointer"
                             />
                         ): (
                             <BiShow
                             onClick={() => setShowPass(true)}
+                            className="cursor-pointer"
                             />
                         )}
                         </div>
@@ -203,6 +314,25 @@ export default function RegisterPage () {
 
                     </div>
                     </form>
+
+                    {/* Pop up succes Regist */}
+                    { success && (
+                    <div className="fixed inset-0 h-screen mx-auto flex items-center justify-center z-50 bg-black bg-opacity-70">
+                        <div className="bg-white p-8 rounded-lg flex flex-col text-white ">
+                            <h2 className="text-xl font-semibold mb-4 text-black text-center">
+                            Successfully Register
+                            </h2>
+                            {/* <ImCheckmark className="text-6xl text-sky-700 animate-pulse mx-auto mb-4" /> */}
+                            <a href='/signInPage' className="text-emerald-700 text-center text-lg font-semibold hover:underline ">Sign in</a>
+                            <button
+                            onClick={() => setSuccess(false)}
+                            className="bg-emerald-500 px-4 py-2 hover:bg-emerald-700 font-bold rounded-lg mt-4 text-white"
+                            >
+                            Close
+                            </button>
+                        </div>
+                    </div>
+                    )}
                 </div>
             </div>
         </div>
