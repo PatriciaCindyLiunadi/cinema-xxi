@@ -97,14 +97,16 @@ export default function RegisterPage () {
                 {/* Container */}
                 <div className="bg-white flex flex-col items-center max-w-screen-md overflow-hidden rounded-lg shadow-[0_3px_10px_rgb(0,0,0,1)] space-y-8 w-full md:flex-row text-slate-700">
                     {/* Welcome gradient-to-t from-emerald-400 to-stone-100  */}
-                    <div className="bg-emerald-400 flex flex-col items-center p-10 w-full md:w-2/5 text-white">
-                        <div className="flex flex-col justify-center items-start text-left text-slate-700 w-full p-5">
+                    <div className="bg-emerald-400 flex flex-col items-center p-10 w-full md:w-2/5 md:h-4/5 text-white">
+                        <div className="flex flex-col justify-center items-start text-left text-slate-700 w-full p-5 mx-auto h-full">
                         <h2 className="text-3xl font-bold mb-4 ">Welcome To Cinema XXI</h2>
-                        <p className="text-base font-normal mb-5">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec
+                        <p className="text-base font-normal mb-5 h-full">
+                        {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec
                             ultricies nisi. Suspendisse pulvinar viverra nibh vel ultricies.
                             Mauris tincidunt mollis diam, at mollis enim aliquet eget. Fusce
-                            eros neque, pharetra eget tincidunt in, tincidunt nec tellus.
+                            eros neque, pharetra eget tincidunt in, tincidunt nec tellus. */}
+                            Let's regist your account..
+                            So you can freely buying your ticket and gets a bunch of promo✨
                         </p>
                         </div>
                     </div>
