@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Head from "next/head";
-import { MdPermIdentity, MdLockOutline, MdPhoneIphone } from "react-icons/md";
+// import { MdPermIdentity, MdLockOutline, MdPhoneIphone } from "react-icons/md";
+import {MdPermIdentity, MdLockOutline, MdPhoneIphone } from "react-icons/md"
 import { FaRegEnvelope } from "react-icons/fa";
 import {BiHide, BiShow, BiSolidInfoCircle} from "react-icons/bi"
 
@@ -95,18 +96,15 @@ export default function RegisterPage () {
             {/* Background bg-gradient-to-r from-cyan-500/10 via-teal-300/10 to-sky-200/10, bg-gradient-to-r from-cyan-300 to-blue-300*/}
             <div className="bg-white block h-screen items-center justify-center p-4 md:flex">
                 {/* Container */}
-                <div className="bg-white flex flex-col items-center max-w-screen-md overflow-hidden rounded-lg shadow-[0_3px_10px_rgb(0,0,0,1)] space-y-8 w-full md:flex-row text-slate-700">
-                    {/* Welcome gradient-to-t from-emerald-400 to-stone-100  */}
-                    <div className="bg-emerald-400 flex flex-col items-center p-10 w-full md:w-2/5 md:h-4/5 text-white">
+                <div className="bg-white block w-full items-center max-w-screen-md overflow-hidden rounded-lg shadow-[0_3px_10px_rgb(0,0,0,1)] space-y-8 md:flex md:flex-row text-slate-700">
+                    {/* Welcome */}
+                    <div className="bg-emerald-400 flex flex-col items-center p-10 w-full md:w-2/5 md:h-4/5 text-white " style={{ minHeight: '90vh' }}>
                         <div className="flex flex-col justify-center items-start text-left text-slate-700 w-full p-5 mx-auto h-full">
                         <h2 className="text-3xl font-bold mb-4 ">Welcome To Cinema XXI</h2>
                         <p className="text-base font-normal mb-5 h-full">
-                        {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec
-                            ultricies nisi. Suspendisse pulvinar viverra nibh vel ultricies.
-                            Mauris tincidunt mollis diam, at mollis enim aliquet eget. Fusce
-                            eros neque, pharetra eget tincidunt in, tincidunt nec tellus. */}
                             Let's regist your account..
-                            So you can freely buying your ticket and gets a bunch of promo✨
+                            So you can freely buying your ticket and gets a bunch of promo✨<b/>
+                            {/* Get ready to explore the latest movie schedules, enjoy exclusive promos, and easily book tickets. */}
                         </p>
                         </div>
                     </div>
@@ -319,7 +317,7 @@ export default function RegisterPage () {
 
                     {/* Pop up succes Regist */}
                     { success && (
-                    <div className="fixed inset-0 h-screen mx-auto flex items-center justify-center z-50 bg-black bg-opacity-70">
+                    <div className="fixed inset-0 h-screen mx-auto flex items-center justify-center z-50 bg-black bg-opacity-70" style={{ minHeight: '100vh' }}> 
                         <div className="bg-white p-8 rounded-lg flex flex-col text-white ">
                             <h2 className="text-xl font-semibold mb-4 text-black text-center">
                             Successfully Register
