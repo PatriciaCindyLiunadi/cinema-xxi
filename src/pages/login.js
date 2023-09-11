@@ -1,38 +1,60 @@
-import axios from 'axios';
+
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useRef, useEffect, useContext, useReference } from 'react';
+import axios from './api/axios';
+import AuthContext from '../context/AuthProvider';
 
-declare global {
-  interface Window {
-    modal_success: any;
-    modal_failed: any;
-    modal_edit: any;
-  }
-}
-
+const LOGIN_URL = '/auth';
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+    const { setAuth } = useContext(AuthContext);
+    const userRef = useRef();
+    const errRef = useRef();
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+    const [success, setSuccess] = useState(false);
 
-    try {
-      const res = await axios.post(`https://dummyjson.com/auth/login`, {
-        username: username,
-        password: password,
-      });
+    useEffect(() => {
+        userRef.current.focus();
+    }, [])
 
-      if (res.status === 200) {
-        window.modal_success.showModal();
-        console.log(res);
-      }
-    } catch (e) {
-      window.modal_failed.showModal();
-      console.log(e);
-    }
-  };
+    useEffect(() => {
+        setErrMsg('');
+    }, [username, password])
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post(LOGIN_URL,
+                JSON.stringify({ username, password }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+            console.log(JSON.stringify(response?.data));
+            //console.log(JSON.stringify(response));
+            const accessToken = response?.data?.accessToken;
+            const roles = response?.data?.roles;
+            setAuth({ username, password, roles, accessToken });
+            setUsername('');
+            setPassword('');
+            setSuccess(true);
+        } catch (err) {
+            if (!err?.response) {
+                setErrMsg('No Server Response');
+            } else if (err.response?.status === 400) {
+                setErrMsg('Missing Username or Password');
+            } else if (err.response?.status === 401) {
+                setErrMsg('Unauthorized');
+            } else {
+                setErrMsg('Login Failed');
+            }
+            errRef.current.focus();
+        }
+    } 
   return (
     <div>
       <div> 
@@ -71,6 +93,7 @@ We're thrilled to see you back on our website. By logging in, you're entering a 
                 type="text"
                 placeholder="Username"
                 value={username}
+                ref={userRef}
                 onChange={(e) => setUsername(e.target.value)}
                 />
                 </div>
@@ -101,26 +124,15 @@ We're thrilled to see you back on our website. By logging in, you're entering a 
         </div>
             </div>
             </form>
-            <dialog id='modal_success' className='modal'>
-        <form method='dialog' className='modal-box'>
-          <h3 className='font-bold text-lg'>Login Berhasil</h3>
-          <p className='py-4'>Hallo anda berhasil login!</p>
-          <div className='modal-action'>
-            <Link href={'/homepage'}>
-              <button className='btn'>OK</button>
-            </Link>
-          </div>
-        </form>
-      </dialog>
-      <dialog id='modal_failed' className='modal'>
-        <form method='dialog' className='modal-box'>
-          <h3 className='font-bold text-lg'>Login Gagal</h3>
-          <p className='py-4'>Username atau Password salah!</p>
-          <div className='modal-action'>
-            <button className='btn'>OK</button>
-          </div>
-        </form>
-      </dialog>
+            {success ? (
+  <section className="text-center py-16">
+    <h1 className="text-4xl font-bold">You are logged in!</h1>
+    <br />
+    <p className="mt-4">
+      <a href="#" className="text-blue-500 hover:underline">Go to Home</a>
+    </p>
+  </section>
+) : null}
         </div>
     </div>
     
