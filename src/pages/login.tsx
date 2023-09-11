@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-const Home = () => {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -82,8 +82,6 @@ We're thrilled to see you back on our website. By logging in, you're entering a 
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 />
-
-                
                 </div>
                 <div className="flex flex-col">
           <button
@@ -108,7 +106,7 @@ We're thrilled to see you back on our website. By logging in, you're entering a 
           <h3 className='font-bold text-lg'>Login Berhasil</h3>
           <p className='py-4'>Hallo anda berhasil login!</p>
           <div className='modal-action'>
-            <Link href={'/products'}>
+            <Link href={'/homepage'}>
               <button className='btn'>OK</button>
             </Link>
           </div>
@@ -130,4 +128,4 @@ We're thrilled to see you back on our website. By logging in, you're entering a 
   );
 };
 
-export default Home;
+export default Login;
