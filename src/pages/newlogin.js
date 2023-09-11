@@ -29,8 +29,8 @@ const Login = () => {
 
   return (
     <div className="bg-gradient-to-r from-cyan-500/10 via-teal-300/10 to-sky-200/10 min-h-screen flex items-center justify-center p-4 md:flex">
-      <div className="bg-white block w-full max-w-screen-md overflow-hidden rounded-lg shadow-md space-y-8 p-4 md:flex md:flex-row text-slate-700">
-        <div className="bg-emerald-400 flex flex-col items-center p-10 w-full md:w-2/5 md:h-4/5 text-white">
+      <div className="bg-white block w-full max-w-screen-md overflow-hidden rounded-lg shadow-md space-y-8 md:flex md:flex-row text-slate-700">
+        <div className="bg-emerald-400 flex flex-col items-center p-10 w-full md:w-2/5 md:h-4/5 text-white" style={{ minHeight: '90vh' }}>
           <div className="flex flex-col justify-center items-start text-left text-slate-700 w-full p-5 mx-auto h-full">
             <h2 className="text-3xl font-bold mb-4">Welcome To Cinema XXI</h2>
             <p className="text-base font-normal mb-5">
@@ -62,15 +62,16 @@ const Login = () => {
               />
             </div>
             <div className="flex flex-col">
-              <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+              <button type="submit" className="bg-emerald-400 text-white px-4 py-2 rounded-md hover:bg-emerald-600">
                 <Link href="/homepage">Login</Link>
               </button>
             </div>
-            <div className="flex flex-col">
-              <button type="button" className="bg-gray-400 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-500">
-                <Link href="/register">Register</Link>
-              </button>
+            <div className="flex flex-row-reverse items-center mt-2 space-x-2 text-gray-600 text-sm">
+              <p>Don't have an account?</p>
             </div>
+            <Link href="/register" className="text-emerald-500 font-semibold flex flex-row-reverse items-center mt-2 space-x-2">
+                Register here
+              </Link>
           </div>
         </form>
       </div>
@@ -98,7 +99,7 @@ const Login = () => {
             <h2 className="text-xl font-semibold mb-4 text-black text-center">
               Login Failed
             </h2>
-            <p className="text-red-500 py-4">Username atau Password salah!</p>
+            <p className="text-red-500 py-4">Username or Password is incorrect!</p>
             <button
               onClick={() => setError(false)}
               className="bg-red-500 px-4 py-2 hover:bg-red-700 font-bold rounded-lg mt-4 text-white"
