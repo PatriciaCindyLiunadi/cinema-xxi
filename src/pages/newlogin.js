@@ -6,6 +6,7 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,14 +18,13 @@ const Login = () => {
       });
 
       if (res.status === 200) {
-        // window.modal_success.showModal();
+        setSuccess(true);
         console.log(res);
       }
     } catch (e) {
-      // window.modal_failed.showModal();
+      setError(true);
       console.log(e);
     }
-    setSuccess(true);
   };
 
   return (
@@ -76,43 +76,38 @@ const Login = () => {
       </div>
 
       {success && (
-            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70">
-              <div className="bg-white p-8 rounded-lg flex flex-col text-white ">
-                <h2 className="text-xl font-semibold mb-4 text-black text-center">
-                  Successfully Sign Up
-                </h2>
-                {/* <ImCheckmark className="text-6xl text-sky-700 animate-pulse mx-auto mb-4" /> */}
-                <a href='/signInPage' className="text-sky-700 text-center text-lg font-semibold hover:underline ">Sign in</a>
-                <button
-                  onClick={() => setSuccess(false)}
-                  className="bg-blue-500 px-4 py-2 hover:bg-blue-700 font-bold rounded-lg mt-4 text-white"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          )}
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70">
+          <div className="bg-white p-8 rounded-lg flex flex-col text-white">
+            <h2 className="text-xl font-semibold mb-4 text-black text-center">
+              Successfully Login
+            </h2>
+            <a href='/signInPage' className="text-sky-700 text-center text-lg font-semibold hover:underline">Go to Cinema XXI</a>
+            <button
+              onClick={() => setSuccess(false)}
+              className="bg-blue-500 px-4 py-2 hover:bg-blue-700 font-bold rounded-lg mt-4 text-white"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
-      {/* <dialog id='modal_success' className='modal fixed inset-x-0 top-1/2 transform -translate-y-1/2'>
-        <form method='dialog' className='modal-box'>
-          <h3 className='font-bold text-lg'>Login Berhasil</h3>
-          <p className='py-4'>Hallo anda berhasil login!</p>
-          <div className='modal-action'>
-            <Link href={'/homepage'}>
-              <button className='btn'>OK</button>
-            </Link>
+      {error && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70">
+          <div className="bg-white p-8 rounded-lg flex flex-col text-white">
+            <h2 className="text-xl font-semibold mb-4 text-black text-center">
+              Login Failed
+            </h2>
+            <p className="text-red-500 py-4">Username atau Password salah!</p>
+            <button
+              onClick={() => setError(false)}
+              className="bg-red-500 px-4 py-2 hover:bg-red-700 font-bold rounded-lg mt-4 text-white"
+            >
+              Close
+            </button>
           </div>
-        </form>
-      </dialog>
-      <dialog id='modal_failed' className='modal fixed inset-x-0 top-1/2 transform -translate-y-1/2'>
-        <form method='dialog' className='modal-box'>
-          <h3 className='font-bold text-lg'>Login Gagal</h3>
-          <p className='py-4'>Username atau Password salah!</p>
-          <div className='modal-action'>
-            <button className='btn'>OK</button>
-          </div>
-        </form>
-      </dialog> */}
+        </div>
+      )}
     </div>
   );
 };
