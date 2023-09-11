@@ -12,7 +12,6 @@ const pass_valid = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{6,10}$
 
 export default function RegisterPage () {
     const userReference = useRef();
-    const errorReference = useRef();
 
     const [fullname, setFullName] = useState('');
     const [validFullname, setValidFullname] = useState(false);
@@ -31,6 +30,7 @@ export default function RegisterPage () {
     const [passFocus, setPassFocus] = useState(false);
 
     const [gender, setGender] = useState('');
+    const [gendererror, setGenderError] = useState(false);
 
     // Hide n Unhine Pass
     const [showPass, setShowPass] = useState(false);
@@ -80,10 +80,17 @@ export default function RegisterPage () {
     const handleSubmit = async(e) => {
         e.preventDefault();
 
-        console.log(fullname, phonenum, email, gender, pass)
-        console.log("Registration Success")
-        setSuccess(true)
-
+        if(!gender){
+          setGenderError(true);
+        } else {
+          setGenderError(false);
+          console.log('gender:', gender);
+          console.log('gendererror:', gendererror);
+          console.log(fullname, phonenum, email, gender, pass);
+          console.log("Registration Success");
+          setSuccess(true);
+          window.location.href = "/";
+        }
     }
 
     return (
@@ -221,7 +228,13 @@ export default function RegisterPage () {
                         {/* Gender */}
 
                         {/* Warning */}
-                        <p
+                        {gendererror && (
+                          <p className="text-red-600 mb-2">
+                            <BiSolidInfoCircle className="mr-2"/>  
+                            Please select your gender
+                          </p>
+                        )}
+                        {/* <p
                         id="gendernote"
                         className={`${
                             !gender
@@ -232,15 +245,14 @@ export default function RegisterPage () {
                         >
                           <BiSolidInfoCircle className="mr-2"/>  
                           Please select your gender
-                        </p>
+                        </p> */}
 
 
                         <div className="w-40 bg-white flex items-center mb-[3%] border-gray-300 border rounded-lg px-3 py-2 focus:outline-none shadow shadow-black">
                         <select
                         className="py-1 w-full focus:outline-none"
-                        onChange={(e) => setGender(e.target.value)}   
-                        required       
-                        aria-describedby="gendernote"        
+                        onChange={(e) => setGender(e.target.value)}       
+                        value={gender}
                         >
                             <option value="">Select Gender</option>
                             <option value="male">Male</option>
@@ -316,14 +328,13 @@ export default function RegisterPage () {
                     </form>
 
                     {/* Pop up succes Regist */}
-                    { success && (
+                    {/* { success && (
                     <div className="fixed inset-0 h-screen mx-auto flex items-center justify-center z-50 bg-black bg-opacity-70" style={{ minHeight: '100vh' }}> 
-                        <div className="bg-white p-8 rounded-lg flex flex-col text-white ">
+                        <div className="bg-white p-8 rounded-lg flex flex-col text-white relative ">
                             <h2 className="text-xl font-semibold mb-4 text-black text-center">
                             Successfully Register
                             </h2>
-                            {/* <ImCheckmark className="text-6xl text-sky-700 animate-pulse mx-auto mb-4" /> */}
-                            <a href='/signInPage' className="text-emerald-700 text-center text-lg font-semibold hover:underline ">Sign in</a>
+                            <a href='/' className="text-emerald-700 text-center text-lg font-semibold hover:underline ">Sign in</a>
                             <button
                             onClick={() => setSuccess(false)}
                             className="bg-emerald-500 px-4 py-2 hover:bg-emerald-700 font-bold rounded-lg mt-4 text-white"
@@ -332,7 +343,7 @@ export default function RegisterPage () {
                             </button>
                         </div>
                     </div>
-                    )}
+                    )} */}
                 </div>
             </div>
         </div>
