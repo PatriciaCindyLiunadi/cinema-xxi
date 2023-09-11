@@ -3,7 +3,7 @@ import axios from 'axios';
 import Link from 'next/link'; 
 
 const Login = () => {
-  const [Email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [isFormValid, setIsFormValid] = useState(true); // Validasi tambahan
@@ -74,9 +74,9 @@ We're thrilled to see you back on our website. By logging in, you're entering a 
                 <div className="w-full bg-white flex items-center mb-[3%] border-gray-300 border rounded-lg px-3 py-2 focus:outline-none shadow shadow-black">
                 <input
                 className="pl-2 py-1 w-60 focus:outline-none"
-                type="email"
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
+                type="Username"
+                placeholder="Username"
+                onChange={(e) => setUsername(e.target.value)}
                 />
                 </div>
                 <div className="w-full bg-white flex items-center mb-[3%] border-gray-300 border rounded-lg px-3 py-2 focus:outline-none shadow shadow-black">
