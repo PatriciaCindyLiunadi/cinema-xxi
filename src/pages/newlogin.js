@@ -82,10 +82,10 @@ const Login = () => {
             <h2 className="text-xl font-semibold mb-4 text-black text-center">
               Successfully Login
             </h2>
-            <a href='/signInPage' className="text-sky-700 text-center text-lg font-semibold hover:underline">Go to Cinema XXI</a>
+            <a href='/signInPage' className="text-green-700 text-center text-lg font-semibold hover:underline">Go to Cinema XXI</a>
             <button
               onClick={() => setSuccess(false)}
-              className="bg-blue-500 px-4 py-2 hover:bg-blue-700 font-bold rounded-lg mt-4 text-white"
+              className="bg-emerald-500 px-4 py-2 hover:bg-emerald-700 font-bold rounded-lg mt-4 text-white"
             >
               Close
             </button>
