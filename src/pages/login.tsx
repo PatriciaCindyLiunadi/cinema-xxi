@@ -1,41 +1,35 @@
-import { useState } from 'react';
 import axios from 'axios';
-import Link from 'next/link'; 
+import Link from 'next/link';
+import { useState } from 'react';
 
-const Login = () => {
+declare global {
+  interface Window {
+    modal_success: any;
+    modal_failed: any;
+    modal_edit: any;
+  }
+}
+
+const Home = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loginError, setLoginError] = useState('');
-  const [isFormValid, setIsFormValid] = useState(true); // Validasi tambahan
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    // Validasi apakah kedua bidang telah diisi
-    if (!username || !password) {
-      setLoginError('Mohon isi semua bidang.');
-      setIsFormValid(false);
-      return;
-    }
-
     try {
-      const response = await axios.post('https://dummyjson.com/docs/auth', {
-        username,
-        password,
+      const res = await axios.post(`https://dummyjson.com/auth/login`, {
+        username: username,
+        password: password,
       });
 
-      // Cek status respons
-      if (response.status === 200) {
-        // Respons berhasil, Anda dapat melakukan tindakan sesuai kebutuhan,
-        // seperti mengarahkan pengguna ke halaman selanjutnya atau menyimpan token otentikasi.
-        console.log('Login berhasil');
-      } else {
-        // Respons tidak berhasil
-        setLoginError('Login gagal. Silakan coba lagi.');
+      if (res.status === 200) {
+        window.modal_success.showModal();
+        console.log(res);
       }
-    } catch (error) {
-      console.error('Error:', error);
-      setLoginError('Terjadi kesalahan dalam menghubungi server. Silakan coba lagi.');
+    } catch (e) {
+      window.modal_failed.showModal();
+      console.log(e);
     }
   };
 
@@ -74,15 +68,18 @@ We're thrilled to see you back on our website. By logging in, you're entering a 
                 <div className="w-full bg-white flex items-center mb-[3%] border-gray-300 border rounded-lg px-3 py-2 focus:outline-none shadow shadow-black">
                 <input
                 className="pl-2 py-1 w-60 focus:outline-none"
-                type="Username"
+                type="text"
                 placeholder="Username"
+                value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 />
                 </div>
                 <div className="w-full bg-white flex items-center mb-[3%] border-gray-300 border rounded-lg px-3 py-2 focus:outline-none shadow shadow-black">
                 <input
                 className="pl-2 py-1 w-60 focus:outline-none"
+                type='password'
                 placeholder="Password"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 />
 
@@ -106,10 +103,31 @@ We're thrilled to see you back on our website. By logging in, you're entering a 
         </div>
             </div>
             </form>
+            <dialog id='modal_success' className='modal'>
+        <form method='dialog' className='modal-box'>
+          <h3 className='font-bold text-lg'>Login Berhasil</h3>
+          <p className='py-4'>Hallo anda berhasil login!</p>
+          <div className='modal-action'>
+            <Link href={'/products'}>
+              <button className='btn'>OK</button>
+            </Link>
+          </div>
+        </form>
+      </dialog>
+      <dialog id='modal_failed' className='modal'>
+        <form method='dialog' className='modal-box'>
+          <h3 className='font-bold text-lg'>Login Gagal</h3>
+          <p className='py-4'>Username atau Password salah!</p>
+          <div className='modal-action'>
+            <button className='btn'>OK</button>
+          </div>
+        </form>
+      </dialog>
         </div>
     </div>
+    
 </div>
   );
 };
 
-export default Login;
+export default Home;
