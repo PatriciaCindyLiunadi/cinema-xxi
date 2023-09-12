@@ -149,7 +149,7 @@ export default function RegisterPage () {
                             <input
                             className="pl-2 py-1 w-60 focus:outline-none"
                             type="text"
-                            placeholder="Fullname" 
+                            placeholder="Username" 
                             autoComplete="off" 
                             ref={userReference}
                             onChange={(e) => setFullName(e.target.value)}
