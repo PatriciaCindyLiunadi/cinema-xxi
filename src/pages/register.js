@@ -80,17 +80,17 @@ export default function RegisterPage () {
     const handleSubmit = async(e) => {
         e.preventDefault();
 
-        if(!gender){
-          setGenderError(true);
-        } else {
-          setGenderError(false);
-          console.log('gender:', gender);
-          console.log('gendererror:', gendererror);
+        // if(!gender){
+        //   setGenderError(true);
+        // } else {
+        //   setGenderError(false);
+        //   console.log('gender:', gender);
+        //   console.log('gendererror:', gendererror);
           console.log(fullname, phonenum, email, gender, pass);
           console.log("Registration Success");
           setSuccess(true);
-          window.location.href = "/";
-        }
+          // window.location.href = "/";
+        // }
     }
 
     return (
@@ -228,12 +228,12 @@ export default function RegisterPage () {
                         {/* Gender */}
 
                         {/* Warning */}
-                        {gendererror && (
+                        {/* {gendererror && (
                           <p className="text-red-600 mb-2">
                             <BiSolidInfoCircle className="mr-2"/>  
                             Please select your gender
                           </p>
-                        )}
+                        )} */}
                         {/* <p
                         id="gendernote"
                         className={`${
@@ -253,6 +253,7 @@ export default function RegisterPage () {
                         className="py-1 w-full focus:outline-none"
                         onChange={(e) => setGender(e.target.value)}       
                         value={gender}
+                        required
                         >
                             <option value="">Select Gender</option>
                             <option value="male">Male</option>
