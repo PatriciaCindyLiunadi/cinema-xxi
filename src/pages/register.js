@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Head from "next/head";
-// import { MdPermIdentity, MdLockOutline, MdPhoneIphone } from "react-icons/md";
-import {MdPermIdentity, MdLockOutline, MdPhoneIphone } from "react-icons/md"
+import {MdPermIdentity,  MdLockOutline, MdPhoneIphone} from "react-icons/md"
 import { FaRegEnvelope } from "react-icons/fa";
 import {BiHide, BiShow, BiSolidInfoCircle} from "react-icons/bi"
 
@@ -89,7 +88,7 @@ export default function RegisterPage () {
           console.log(fullname, phonenum, email, gender, pass);
           console.log("Registration Success");
           setSuccess(true);
-          // window.location.href = "/";
+          window.location.href = "/newlogin";
         // }
     }
 

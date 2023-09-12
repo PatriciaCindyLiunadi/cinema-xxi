@@ -20,7 +20,7 @@ const Login = () => {
       if (res.status === 200) {
         setSuccess(true);
         console.log(res);
-        window.location.href = "/";
+        window.location.href = "/homepage";
       }
     } catch (e) {
       setError(true);
