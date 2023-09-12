@@ -9,11 +9,11 @@ const Movie = ({movie}) => {
       <div className="container max-w-4xl mx-auto pt-6">
         <Meta title={movie.title}/>
         <div className="px-3">
-          <Image src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} width={1000} height={600} className="rounded-md"/>
-          <h1 className="font-bold text-xl my-2">{movie.title}</h1>
-          <p className="text-gray-600 text-sm mt-4">{movie.overview}</p>
-          <p className="mt-5 text-gray-600 text-sm">Genres: <span className="font-bold">{movie.genres.map(genre => genre.name).join(',')}</span></p>
-          <p className="text-gray-600text-sm">Release Date: <span className="font-bold">{movie.release_date}</span></p>
+          <Image src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} width={900} height={500} className="rounded-md"/>
+          <h1 className="font-bold text-3xl my-2">{movie.title}</h1>
+          <p className="text-black-600 text-sm mt-4">{movie.overview}</p>
+          <p className="mt-5 text-black-600 text-sm">Genres: <span className="font-bold">{movie.genres.map(genre => genre.name).join(',')}</span></p>
+          <p className="text-black-600 text-sm mt-2 mb-10">Release Date: <span className="font-bold">{movie.release_date}</span></p>
         </div>
       </div>
     )

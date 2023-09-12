@@ -6,7 +6,7 @@ import PopularMovie from "components/PopularMovie"; // Pindahkan impor ke atas
 export default function Home({ movies }) {
   console.log(movies);
   return (
-    <div className="bg-gray-700">
+    <div className="bg-gray-200">
       <Hero />
       <PopularMovie movies={movies.results} />
     </div>

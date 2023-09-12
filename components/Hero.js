@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Hero = () => {
     return (
-        <div className="text-center bg-gray-700 pb-10">
+        <div className="text-center bg-gray-200 pb-10">
             <div className="w-60 mx-auto">
                 {/* <Image src={"/home_cinema.png"} width={200} height={200} layout="responsive"/> */}
             </div>

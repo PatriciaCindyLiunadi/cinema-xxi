@@ -5,7 +5,7 @@ const Navbar = () => {
   const router = useRouter();
 
   const isMovieDetailPage = router.pathname.startsWith('/movie/');
-  const isHomePage = router.pathname === '/homePage';
+  const isHomePage = router.pathname === '/homepage';
 
   const handleLogout = () => {
     // Lakukan tindakan logout di sini jika diperlukan
@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-700">
+    <nav className="bg-emerald-700">
       <div className="flex justify-between items-center font-bold text-neutral-100 p-4 max-w-7xl mx-auto container tracking-widest font-neue">
         {isMovieDetailPage || isHomePage ? (
           <Link href="/homepage">
