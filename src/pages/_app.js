@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '/components/Layout'; // Pastikan path-nya benar
 
-import '@/styles/globals.css';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   return (
